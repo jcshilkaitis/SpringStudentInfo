@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Contacts</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentStudent : ${studentinfo}" >
+<td th:text="${currentStudent.id}" />
+ <td th:text="${currentStudent.name}" />
+ <td th:text="${currentStudent.beltRank}" />
+ <td th:text="${currentStudent.age}" />
+ <td><a th:href="@{/editStudent/{id}(id=${currentStudent.id})}">Edit</a></td>
+ <td><a th:href="@{/deleteStudent/{id}(id=${currentStudent.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="../addStudent">Add a new Student</a>
+</body>
+</html>

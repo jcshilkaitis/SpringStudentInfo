@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add New Student</title>
+</head>
+<body>
+<form th:object="${newStudent}" th:action="@{/addStudent}"
+method='POST'>
+Name: <input name="name" size="20"> <br />
+Belt Rank: <input name="beltRank" size="20"><br />
+Age: <input name="age" size="20"><br />
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewAllStudents">View all Students</a>
+</body>
+</html>
