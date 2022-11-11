@@ -2,15 +2,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Add New Student</title>
+<script>
+	function checkForm(form) {
+		// validation fails if the input is blank
+		if (form.name.value == "") {
+			alert("Please enter a name");
+			form.name.focus();
+			return false;
+		}if (form.beltRank.value == "") {
+			alert("Please enter a rank");
+			form.beltRank.focus();
+			return false;
+		}if (form.age.value == "") {
+			alert("please enter an age");
+			form.age.focus();
+			return false;
+		}
+		
+		// validation was successful
+		return true;
+	}
+</script>
 </head>
 <body>
-<form th:object="${newStudent}" th:action="@{/addStudent}"
-method='POST'>
-Name: <input name="name" size="20"> <br />
-Belt Rank: <input name="beltRank" size="20"><br />
-Age: <input name="age" size="20"><br />
-<input name="submit" type="submit" value="submit" />
-</form>
-<a href="viewAllStudents">View all Students</a>
+	<div id="error"></div>
+	<form th:object="${newStudent}" th:action="@{/addStudent}" method='POST' name='addForm' id='addForm' onsubmit="return checkForm(this);">
+		Name: <input name="name" size="20" id="name"> <br /> 
+		Belt Rank: <input name="beltRank" size="20"><br />
+		Age: <input name="age" size="20"><br /> 
+		<input name="submit" type="submit" value="submit" />
+	</form>
+	<a href="viewAllStudents">View all Students</a>
 </body>
 </html>
